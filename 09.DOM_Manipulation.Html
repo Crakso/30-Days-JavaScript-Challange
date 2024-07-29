@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM_Manipulation.</title>
+
+    <style>
+      .changingClass {
+      }
+      .changingClass:hover {
+        background-color: chartreuse;
+        border-color: darkslategray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1 id="TextContent">Hello World.</h1>
+      <h2 class="bgcolor">Changing Bg color by its class.</h2>
+      <div>
+        <img
+          src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg"
+          alt=""
+        />
+      </div>
+      <ul>
+        <li>sun</li>
+        <li>air</li>
+      </ul>
+      <button id="btn" onclick="{OnClick()}">Change Text</button>
+    </div>
+    <script>
+      /*
+              Activity 1 :Selecting and Manipulating Elements.
+          */
+
+      // Task 1
+
+      const text = document.querySelector("#TextContent");
+      text.textContent = "Hyyy.....";
+
+      // Task 2
+
+      const changeColor = document.querySelector(".bgcolor");
+      changeColor.style.backgroundColor = "red";
+
+      /*
+               Activity 2 : Creating and Appending Elements.
+      */
+
+      //Task 3
+
+      const newElement = document.createElement("div");
+      const insideText = document.createTextNode("Hello Guyssss..");
+      newElement.appendChild(insideText);
+      document.body.append(newElement, "Helloooooo");
+
+      //Task 4
+
+      const newLI = document.createElement("li");
+      const liText = document.createTextNode("water");
+      newLI.appendChild(liText);
+      document.querySelector("ul").appendChild(newLI);
+
+      /*
+               Activity 3 : Removing Elements.
+      */
+
+      //Task 5
+
+      const removeElement = document.querySelector("h1");
+      removeElement.remove();
+
+      //Task 6
+
+      const removeHTMLElementLastChild = document
+        .querySelector("ul")
+        .lastChild.remove();
+
+      /*
+               Activity 4 : Modifying Attributes and Classes.
+      */
+
+      //Task 7
+
+      const img = document.querySelector("img");
+      img.style.width = "30%";
+      img.setAttribute(
+        "src",
+        "https://static.gettyimages.com/display-sets/creative-landing/images/GettyImages-1448734171.jpg"
+      );
+
+      //Task 8
+
+      const ul = document.querySelector("ul");
+      ul.classList.add("changingClass");
+
+      ul.classList.remove("changingClass");
+
+      /*
+               Activity 5 : Event Handling.
+      */
+
+      // Task 9
+
+      function OnClick() {
+        const OldText = document.querySelector(".bgcolor");
+        OldText.textContent = "Text Changed.";
+      }
+
+      const selectElement = document.querySelector("#btn");
+
+      selectElement.addEventListener("mouseover", () => {
+        selectElement.classList.add("changingClass");
+      });
+    </script>
+  </body>
+</html>
