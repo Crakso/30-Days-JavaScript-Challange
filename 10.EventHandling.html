@@ -153,7 +153,7 @@
       //Task 9
 
       document.getElementById("ul").addEventListener("click", function (e) {
-        if (e.target.id == "li") {
+        if (e.target.id === "li") {
           // console.log(e.target);
         }
       });
@@ -162,8 +162,8 @@
 
       const parentElement = document.querySelector("#ul");
       parentElement.addEventListener("click", function (e) {
-        // console.log(e.target.tagName);
-        if ((e.target && e.target.childern) || e.target.tagName === "UL") {
+        console.log(e.target.parentElement);
+        if ((e.target && e.target.parentElement) || e.target.tagName === "UL") {
           const newelement = document.createElement("li");
           newelement.appendChild(
             document.createTextNode("New LI added Dynamically.")
