@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <body>
+    <div>
+      <h1 id="heading">Event Handling</h1>
+      <form id="container">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </p>
+        <img
+          id="img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoBuMvSuYezLE9rwI-zOJeIOmcIGfDPqOvFA&s"
+          alt="image"
+        />
+        <input id="input" type="text" />
+        <select name="" id="selectedValue">
+          <option
+            value="Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,"
+          >
+            default
+          </option>
+          <option value="Hello Guys....">Hello Guys....</option>
+          <option value="Welcome to our page.">Welcome to our page.</option>
+          <option value="We are greatfull.">We are greatfull.</option>
+        </select>
+        <button id="btn">Change Text</button>
+      </form>
+
+      <ul id="ul">
+        <li id="li">Hello</li>
+        <li id="li">guyssss</li>
+        <li id="li">welcome</li>
+        <li id="li">to our</li>
+        <li id="li">Page</li>
+      </ul>
+    </div>
+
+    <script>
+      /*
+         Activity 1 : Basic Event Handling.
+      */
+
+      // Task 1
+
+      document.querySelector("#btn").addEventListener(
+        "click",
+        function (e) {
+          //   console.log(e);
+          const oldText = document.querySelector("p");
+          oldText.textContent = "Hello Guys welcome to our page.";
+        },
+        false
+      );
+
+      // Task 2
+
+      const img = document.querySelector("#img");
+      //   console.log(img);
+      img.addEventListener(
+        "dblclick",
+        function (e) {
+          if (img.style.opacity === "0") {
+            img.style.opacity = "1";
+          } else {
+            img.style.opacity = "0";
+          }
+        },
+        false
+      );
+
+      /*
+         Activity 2 : Mouse Events.
+      */
+
+      //Task 3
+
+      const btn = document.querySelector("#btn");
+      btn.addEventListener(
+        "mouseover",
+        function (e) {
+          btn.style.backgroundColor = "lightgreen";
+        },
+        false
+      );
+
+      // Task 4
+
+      btn.addEventListener(
+        "mouseout",
+        function (e) {
+          btn.style.backgroundColor = "white";
+        },
+        false
+      );
+
+      /*
+         Activity 3 : Keyboard Events.
+      */
+
+      //Task 5
+      document.getElementById("input").addEventListener(
+        "keydown",
+        function (e) {
+          //   console.log(e);
+        },
+        false
+      );
+
+      // Task 6
+
+      document.getElementById("input").addEventListener(
+        "keyup",
+        function (e) {
+          //   console.log(e.target.value);
+        },
+        false
+      );
+
+      /*
+         Activity 4 : Form Events.
+      */
+
+      //Task 7
+
+      document
+        .getElementById("container")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          console.log(e.target);
+        });
+
+      //Task 8
+
+      const selectedValue = document.getElementById("selectedValue");
+      selectedValue.addEventListener("change", function (e) {
+        e.preventDefault();
+        document.querySelector("p").textContent = selectedValue.value;
+      });
+
+      /*
+         Activity 5 : Event Delegation.
+      */
+
+      //Task 9
+
+      document.getElementById("ul").addEventListener("click", function (e) {
+        if (e.target.id == "li") {
+          // console.log(e.target);
+        }
+      });
+
+      //Task 10
+
+      const parentElement = document.querySelector("#ul");
+      parentElement.addEventListener("click", function (e) {
+        // console.log(e.target.tagName);
+        if ((e.target && e.target.childern) || e.target.tagName === "UL") {
+          const newelement = document.createElement("li");
+          newelement.appendChild(
+            document.createTextNode("New LI added Dynamically.")
+          );
+          parentElement.appendChild(newelement);
+        }
+      });
+    </script>
+  </body>
+</html>
